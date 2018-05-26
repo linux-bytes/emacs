@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil nil ("telepathy.el") (23303 39028 192361 929000))
+;;;### (autoloads nil nil ("telepathy.el") (23305 2719 709239 751000))
 
 ;;;***
 

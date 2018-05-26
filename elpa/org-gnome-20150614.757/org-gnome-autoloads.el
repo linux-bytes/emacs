@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "org-gnome" "org-gnome.el" (23303 39029 573335
-;;;;;;  776000))
+;;;### (autoloads nil "org-gnome" "org-gnome.el" (23305 2720 911204
+;;;;;;  496000))
 ;;; Generated autoloads from org-gnome.el
 
 (defvar global-org-gnome-minor-mode nil "\

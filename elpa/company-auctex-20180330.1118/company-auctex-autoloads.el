@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "company-auctex" "company-auctex.el" (23303
-;;;;;;  34766 560558 167000))
+;;;### (autoloads nil "company-auctex" "company-auctex.el" (23305
+;;;;;;  2766 189901 984000))
 ;;; Generated autoloads from company-auctex.el
 
 (autoload 'company-auctex-macros "company-auctex" "\

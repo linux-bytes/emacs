@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil nil ("gnome-calendar.el") (23303 39027 833368
-;;;;;;  731000))
+;;;### (autoloads nil nil ("gnome-calendar.el") (23305 2719 435247
+;;;;;;  792000))
 
 ;;;***
 

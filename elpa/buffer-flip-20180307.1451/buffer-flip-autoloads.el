@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "buffer-flip" "buffer-flip.el" (23288 2899
-;;;;;;  43243 224000))
+;;;### (autoloads nil "buffer-flip" "buffer-flip.el" (23305 2717
+;;;;;;  25318 599000))
 ;;; Generated autoloads from buffer-flip.el
 
 (autoload 'buffer-flip "buffer-flip" "\
@@ -21,11 +21,6 @@ Switch to another window and begin cycling through buffers in that window.
 If there is no other window, one is created first.
 
 \(fn)" t nil)
-
-;;;***
-
-;;;### (autoloads nil nil ("buffer-flip-pkg.el") (23288 2890 642354
-;;;;;;  496000))
 
 ;;;***
 

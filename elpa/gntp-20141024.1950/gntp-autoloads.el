@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "gntp" "gntp.el" (23303 39028 832349 805000))
+;;;### (autoloads nil "gntp" "gntp.el" (23305 2720 289222 735000))
 ;;; Generated autoloads from gntp.el
 
 (autoload 'gntp-notify "gntp" "\
