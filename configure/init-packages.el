@@ -1,7 +1,11 @@
 (require 'cl)          ;; cl - Common Lisp Extension, needs by follow functions
 (require 'package)
 (package-initialize)
-(add-to-list 'package-archives '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
+(add-to-list 'package-archives '("melpa-cn" . "https://elpa.emacs-china.org/melpa/") t)
+;; (add-to-list 'package-archives '(
+;; 				 ("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+;; 				 ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")
+;; 				 ("gnu"      . "http://elpa.gnu.org/packages/")))
 
 ;; Add Packages
 (defvar jerry/packages '(
@@ -16,11 +20,30 @@
                          nlinum
                          org
                          org-gnome
+                         jedi
+                         jedi-core
                          company
+			 company-jedi
                          company-auctex
                          smartparens
                          yasnippet
+                         yasnippet-snippets
+                         youdao-dictionary
+                         ;;magic-latex-buffer
+                         ;;magic
+                         ;;magithub
+                         ;;magit-imerge
+                         ;;magit-todos
+                         ;;magit-gitflow
+                         ;;magit-gerrit
+                         ;;magit-find-file
+                         markdown-mode
+                         markdown-toc
                          popwin
+			 org2ctex
+			 pdf-tools
+			 ecb
+			 ;; thing-at-point
 			 xcscope
                          ;; --- Major Mode ---
                          auctex
@@ -65,7 +88,7 @@
 (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 
 ;; 显示行号
-(global-nlinum-mode 1)
+;; (global-nlinum-mode 1)
 
 ;; (require 'hungry-delete-mode)
 (global-hungry-delete-mode t)
@@ -75,5 +98,25 @@
 
 ;; 加载 monokai 主题
 (load-theme 'monokai t)
+
+;; Install pdf-tools
+(pdf-tools-install)
+
+;; magic-latex-buffer
+;; (require 'magic-latex-buffer)
+;; (add-hook 'latex-mode-hook 'magic-latex-buffer)
+
+;; magic-find-file
+;;(require 'magic)
+;;(require 'magit-find-file)    ;; if not using the ELPA package
+;;(global-set-key (kbd "C-c p") 'magit-find-file-completing-read)
+
+;; magic-flow
+;;(require 'magit-gitflow)
+;;(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+
+;; For org2ctex
+(require 'org2ctex)
+(org2ctex-toggle t)
 
 (provide 'init-packages)

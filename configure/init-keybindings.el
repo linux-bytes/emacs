@@ -24,9 +24,12 @@
 (global-set-key (kbd "C-c c")    'org-capture)
 (global-set-key (kbd "C-c b")    'org-iswitchb)
 
+;; For Youdao
+(setq url-automatic-caching t)
+(global-set-key (kbd "C-q")      'youdao-dictionary-search-at-point+)
+
 ;; key to begin cycling buffers.  Global key.
 (global-set-key (kbd "M-<next>") 'buffer-flip)
-
 ;; transient keymap used once cycling starts
 (setq buffer-flip-map
       (let ((map (make-sparse-keymap)))
