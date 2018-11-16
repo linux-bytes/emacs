@@ -30,6 +30,7 @@
 
 ;; key to begin cycling buffers.  Global key.
 (global-set-key (kbd "M-<next>") 'buffer-flip)
+
 ;; transient keymap used once cycling starts
 (setq buffer-flip-map
       (let ((map (make-sparse-keymap)))

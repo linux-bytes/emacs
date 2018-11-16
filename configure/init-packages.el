@@ -1,16 +1,16 @@
 (require 'cl)          ;; cl - Common Lisp Extension, needs by follow functions
 (require 'package)
 (package-initialize)
-(add-to-list 'package-archives '("melpa-cn" . "https://elpa.emacs-china.org/melpa/") t)
-;; (add-to-list 'package-archives '(
-;; 				 ("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-;; 				 ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")
-;; 				 ("gnu"      . "http://elpa.gnu.org/packages/")))
+(add-to-list 'package-archives '(
+                                ("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+                                ("melpa"    . "http://www.melpa.org/")
+                                ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")
+                                ("gnu"      . "http://elpa.gnu.org/packages/")))
 
 ;; Add Packages
 (defvar jerry/packages '(
                          ;; --- Auto-completion ---
-                         ;; --- Better Editor ---                         
+                         ;; --- Better Editor ---
                          hungry-delete
                          ;; smex
                          swiper
@@ -45,6 +45,9 @@
 			 ecb
 			 ;; thing-at-point
 			 xcscope
+                         ;; org-pdfview
+                         pdf-tools
+                         youdao-dictionary
                          ;; --- Major Mode ---
                          auctex
                          ;; --- Minor Mode ---
@@ -73,6 +76,9 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
+;; Config the YASnippet
+; (yas/load-directory "/usr/share/emacs/etc/yasnippet/snippets/text-mode/")
+;; (yas/load-directory "~/.emacs.d/snippets/")
 
 ;; 开启 swiper 功能
 (ivy-mode t)

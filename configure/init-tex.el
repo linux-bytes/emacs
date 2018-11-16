@@ -1,4 +1,6 @@
-(setq TeX-command-extra-options "-shell-escape")
+(require 'reftex)
+
+(setq TeX-command-extra-options "-shell-escape -synctex=1")
 (setq TeX-engine (quote xetex))
 
 (setq TeX-clean-confirm   nil)
@@ -23,5 +25,8 @@
          ("minted"))
         ("[Item List]"
          ("itemize")))))
+
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex) 
+(setq reftex-plug-into-AUCTeX t)
 
 (provide 'init-tex)
