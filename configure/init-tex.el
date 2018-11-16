@@ -26,7 +26,12 @@
         ("[Item List]"
          ("itemize")))))
 
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex) 
+(add-hook 'LaTeX-mode-hook (lambda()
+	                       (turn-on-reftex)
+	                       (yas-minor-mode)
+	                       (yas-reload-all t)
+	                   ))
+
 (setq reftex-plug-into-AUCTeX t)
 
 (provide 'init-tex)

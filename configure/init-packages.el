@@ -77,10 +77,6 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-;; Config the YASnippet
-; (yas/load-directory "/usr/share/emacs/etc/yasnippet/snippets/text-mode/")
-;; (yas/load-directory "~/.emacs.d/snippets/")
-
 ;; 开启 swiper 功能
 (ivy-mode t)
 (setq ivy-use-virtual-buffers t)

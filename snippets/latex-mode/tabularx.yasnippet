@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: Insert a tabularx
+# key: tablex
+# contributor : Jerry Zhou <uulinux@gmail.com>
+# --
+\begin{tabularx}{\textwidth}{${1:p{3cm}X}}
+  \\toprule
+  \\textbf{Member Name}& \\textbf{Function} \\\\
+  \\toprule
+  ${2}      & ${3} \\\\
+  \\midrule
+  ${4}      & ${5} \\\\
+  \\bottomrule
+\end{tabularx}
