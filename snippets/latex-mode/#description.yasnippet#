@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: Insert a description
-# key: desc
-# contributor : Jerry Zhou <uulinux@gmail.com>
-# --
-\begin{basedescript}{\desclabelstyle{\pushlabel}\desclabelwidth{10em}}
-  \item[${1:item}] $0
-\end{basedescript}
