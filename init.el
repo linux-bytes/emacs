@@ -9,6 +9,7 @@
 (require 'init-ui)
 (require 'init-change-defaults)
 (require 'init-org)
+(require 'init-flycheck)
 (require 'init-tex)
 (require 'init-keybindings)
 

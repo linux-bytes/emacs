@@ -19,8 +19,10 @@
                          buffer-flip
                          htmlize
                          nlinum
+			 ;; For org mode
                          org
-                         org-gnome
+			 org2ctex
+                         ;; org-pdfview
                          jedi
                          jedi-core
                          company
@@ -29,7 +31,10 @@
                          smartparens
                          yasnippet
                          yasnippet-snippets
-                         youdao-dictionary
+                         flycheck
+                         flycheck-cstyle
+                         flycheck-pycheckers
+                         flycheck-pyflakes
                          ;;magic-latex-buffer
                          ;;magic
                          ;;magithub
@@ -41,12 +46,9 @@
                          markdown-mode
                          markdown-toc
                          popwin
-			 org2ctex
-			 pdf-tools
 			 ecb
 			 ;; thing-at-point
 			 xcscope
-                         ;; org-pdfview
                          pdf-tools
                          youdao-dictionary
                          ;; --- Major Mode ---
@@ -56,6 +58,8 @@
                          ;; exec-path-from-shell
                          ;; --- Themes ---
                          monokai-theme
+                         kaolin-themes
+                         all-the-icons
                          ;; solarized-theme
                          ) "Default packages")
 
@@ -98,9 +102,6 @@
 
 ;; 开启全局 Company 补全
 (global-company-mode 1)
-
-;; 加载 monokai 主题
-(load-theme 'monokai t)
 
 ;; Install pdf-tools
 (pdf-tools-install)
