@@ -19,6 +19,14 @@
 ;; 更改显示字体大小 16pt
 ;; http://stackoverflow.com/questions/294664/how-to-set-the-font-size-in-emacs
 ;; (set-face-attribute 'default nil :height 120)
+;; (set-default-font "Consolas")
+;; (set-fontset-font "fontset-default" 'chinese-gbk "微软雅黑")
+;; (setq face-font-rescale-alist '(("宋体"    . 1.4)
+;;                                 ("微软雅黑" . 1.4)
+;;                                 ))
+
+;; (set-default-font "-unknown-Inconsolata-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+(set-default-font "-PfEd-Inconsolata-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
 
 (require 'kaolin-themes)
 (load-theme 'kaolin-dark t)

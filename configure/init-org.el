@@ -45,11 +45,4 @@
        "<link rel=\"stylesheet\" type=\"text/css\" href=\"%s\"/>"
        (expand-file-name "configure/org_style/style.css" user-emacs-directory)))
 
-;; (setq org-agenda-files
-;;       (quote
-;;        ("~/org/work/prj.org" "~/org/work/work.org"
-;;         "~/org/study/study.org" "~/org/study/ideas.org"
-;;         "~/org/misc/misc.org")))
-;; (expand-file-name "configure/custom.el" user-emacs-directory)
-
 (provide 'init-org)

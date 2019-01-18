@@ -30,7 +30,14 @@
 	                       (turn-on-reftex)
 	                       (yas-minor-mode)
 	                       (yas-reload-all t)
+			       (latex-preview-pane-mode)
 	                   ))
+
+
+(setq latex-preview-pane-multifile-mode (quote auctex))
+(setq pdf-latex-command "xelatex")
+(setq preview-orientation (quote right))
+(setq shell-escape-mode "-shell-escape")
 
 (setq reftex-plug-into-AUCTeX t)
 
