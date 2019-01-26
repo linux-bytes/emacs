@@ -1,3 +1,5 @@
+;;; package -- Summury
+;;; Commentary:
 (require 'cl)          ;; cl - Common Lisp Extension, needs by follow functions
 (require 'package)
 (package-initialize)
@@ -47,6 +49,9 @@
                          markdown-toc
                          popwin
 			 ecb
+                         ;; For window jump
+                         ace-window
+                         ace-jump-buffer
 			 ;; thing-at-point
 			 xcscope
                          pdf-tools
@@ -124,3 +129,4 @@
 (org2ctex-toggle t)
 
 (provide 'init-packages)
+;;; init-packages.el ends here
