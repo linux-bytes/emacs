@@ -5,6 +5,7 @@
 ;; (package-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/configure")
+
 (require 'init-packages)
 (require 'init-ui)
 (require 'init-change-defaults)

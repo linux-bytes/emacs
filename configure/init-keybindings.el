@@ -15,10 +15,11 @@
 (global-set-key (kbd "C-h C-v")  'find-variable)
 (global-set-key (kbd "C-h C-k")  'find-function-on-key)
 (global-set-key (kbd "C-c C-r")  'ivy-resume)
-(global-set-key (kbd "C-c p f")  'counsel-git)
+(global-set-key (kbd "C-c g")    'counsel-git)
+(global-set-key (kbd "C-c j")    'counsel-git-grep)
+(global-set-key (kbd "C-c s")    'counsel-ag)
 
-(global-set-key (kbd "C-x C-r")  'recentf-open-files)
-
+(global-set-key (kbd "C-x C-o")  'recentf-open-files)
 (global-set-key (kbd "C-c l")    'org-store-link)
 (global-set-key (kbd "C-c a")    'org-agenda)
 (global-set-key (kbd "C-c c")    'org-capture)
@@ -27,17 +28,6 @@
 ;; For Youdao
 (setq url-automatic-caching t)
 (global-set-key (kbd "C-q")      'youdao-dictionary-search-at-point+)
-
-;; key to begin cycling buffers.  Global key.
-(global-set-key (kbd "M-<next>") 'buffer-flip)
-
-;; transient keymap used once cycling starts
-(setq buffer-flip-map
-      (let ((map (make-sparse-keymap)))
-        (define-key map (kbd "M-<next>")   'buffer-flip-forward)
-        (define-key map (kbd "M-<prior>")  'buffer-flip-backward)
-        (define-key map (kbd "M-ESC")      'buffer-flip-abort)
-        map))
 
 ;; For ace-window
 (global-set-key (kbd "M-q") 'ace-window)

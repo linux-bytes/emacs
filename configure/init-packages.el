@@ -12,13 +12,16 @@
 
 ;; Add Packages
 (defvar jerry/packages '(
-                         ;; --- Auto-completion ---
                          ;; --- Better Editor ---
                          hungry-delete
-                         ;; smex
+                         ;; Ivy
+                         ivy
                          swiper
                          counsel
-                         buffer-flip
+                         ;;
+                         hydra
+                         ivy-hydra
+                         ;;
                          htmlize
                          nlinum
 			 ;; For org mode
@@ -27,12 +30,14 @@
                          ;; org-pdfview
                          jedi
                          jedi-core
+                         ;; --- Auto-completion ---
                          company
 			 company-jedi
                          company-auctex
                          smartparens
                          yasnippet
                          yasnippet-snippets
+                         ;; flycheck
                          flycheck
                          flycheck-cstyle
                          flycheck-pycheckers
