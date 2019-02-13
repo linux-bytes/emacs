@@ -45,4 +45,20 @@
        "<link rel=\"stylesheet\" type=\"text/css\" href=\"%s\"/>"
        (expand-file-name "configure/org_style/style.css" user-emacs-directory)))
 
+;; For babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(;; Draw Picture
+   (ditaa . t)
+   (dot . t)
+   (plantuml . t)
+   (latex . t)
+   ;; Program Languages
+   (emacs-lisp . t)
+   (python . t)
+   (R . t)
+   (ruby . t)
+   ))
+(setq org-confirm-babel-evaluate nil)
+
 (provide 'init-org)

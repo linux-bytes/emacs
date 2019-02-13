@@ -14,6 +14,8 @@
 (defvar jerry/packages '(
                          ;; --- Better Editor ---
                          hungry-delete
+                         ;; Draw
+                         graphviz-dot-mode
                          ;; Ivy
                          ivy
                          swiper
