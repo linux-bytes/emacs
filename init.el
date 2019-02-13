@@ -12,7 +12,7 @@
 (require 'init-org)
 (require 'init-flycheck)
 (require 'init-tex)
-(provide 'init-misc-pkg)
+(require 'init-misc-pkg)
 (require 'init-keybindings)
 
 (setq custom-file (expand-file-name "configure/custom.el" user-emacs-directory))
