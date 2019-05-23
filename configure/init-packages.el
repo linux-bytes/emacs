@@ -65,6 +65,8 @@
                          youdao-dictionary
                          ;; --- Major Mode ---
                          auctex
+                         latex-extra
+                         magic-latex-buffer
                          ;; --- Minor Mode ---
                          ;; nodejs-repl
                          ;; exec-path-from-shell

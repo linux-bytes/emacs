@@ -31,8 +31,9 @@
 	                       (yas-minor-mode)
 	                       (yas-reload-all t)
 			       (latex-preview-pane-mode)
+                               (latex-extra-mode)
+                               (magic-latex-buffer)
 	                   ))
-
 
 (setq latex-preview-pane-multifile-mode (quote auctex))
 (setq pdf-latex-command "xelatex")
