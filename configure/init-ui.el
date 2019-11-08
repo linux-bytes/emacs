@@ -7,8 +7,12 @@
 ;; 高亮当前的行
 (global-hl-line-mode t)
 
-;; 更改光标的样式（不能生效，解决方案见第二集）
+;; 更改光标的样式
 (setq-default cursor-type 'bar)
+
+;; 当光标移出屏幕外，文本只会滚动一行
+(setq scroll-step           1
+      scroll-conservatively 10000)
 
 ;; 关闭启动帮助画面
 (setq inhibit-splash-screen 1)
