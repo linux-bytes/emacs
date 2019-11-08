@@ -3,12 +3,14 @@
 (require 'cl)          ;; cl - Common Lisp Extension, needs by follow functions
 (require 'package)
 (package-initialize)
-(add-to-list 'package-archives '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
+(add-to-list 'package-archives '("melpa-cn" . "http://elpa.emacs-china.org/melpa/") t)
+(add-to-list 'package-archives '("gnu-cn" . "http://elpa.emacs-china.org/gnu/") t)
+
 ;; (add-to-list 'package-archives '(
-;; 				("gnu" . "https://elpa.gnu.org/packages/")
-;; 				("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-;; 				("gnu-cn" . "http://elpa.emacs-china.org/gnu/")
-;; 				))
+;;  				("gnu" . "https://elpa.gnu.org/packages/")
+;;  				("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+;;  				("gnu-cn" . "http://elpa.emacs-china.org/gnu/")
+;;  				))
 
 ;; Add Packages
 (defvar jerry/packages '(
