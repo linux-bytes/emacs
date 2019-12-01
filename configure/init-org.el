@@ -6,6 +6,7 @@
 
 (setq my-gtd-files (directory-files "~/custom/GTD" t "\\.org$" t))
 (setq my-prj-files (directory-files-recursively "~/custom/projects" "\\.org$"))
+(setq my-study-files (directory-files-recursively "~/custom/study" "\\.org$"))
 
 (setq my-gtd-misc-file
       (expand-file-name "misc.org" "~/custom/GTD"))
@@ -19,6 +20,7 @@
 (setq org-agenda-files
       (delete-dups
        (append my-gtd-files
+               my-study-files
                my-prj-files
                (list my-gtd-misc-file
                      my-gtd-proj-file
