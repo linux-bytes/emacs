@@ -31,6 +31,13 @@
 			 ;; For org mode
                          org
 			 org2ctex
+			 org-alert
+			 org-edit-latex
+			 org-easy-img-insert
+			 org-mime
+			 org-pomodoro
+			 org-projectile
+			 org-sidebar
                          ;; org-pdfview
                          jedi
                          jedi-core
