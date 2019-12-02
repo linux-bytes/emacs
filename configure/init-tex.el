@@ -30,9 +30,9 @@
 	                       (turn-on-reftex)
 	                       (yas-minor-mode)
 	                       (yas-reload-all t)
-			       (latex-preview-pane-mode)
+;;			       (latex-preview-pane-mode)
                                (latex-extra-mode)
-                               (magic-latex-buffer)
+;;                               (magic-latex-buffer)
 	                   ))
 
 (setq latex-preview-pane-multifile-mode (quote auctex))
