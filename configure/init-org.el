@@ -4,27 +4,12 @@
 (setq org-refile-targets               nil)
 (setq org-tags-column                  80)
 
-(setq my-gtd-files (directory-files "~/custom/GTD" t "\\.org$" t))
-(setq my-prj-files (directory-files-recursively "~/custom/projects" "\\.org$"))
-(setq my-study-files (directory-files-recursively "~/custom/study" "\\.org$"))
-
 (setq my-gtd-misc-file
       (expand-file-name "misc.org" "~/custom/GTD"))
-(setq my-gtd-proj-file
-      (expand-file-name "proj.org" "~/custom/GTD"))
-(setq my-gtd-study-file
-      (expand-file-name "study.org" "~/custom/GTD"))
 
 (setq org-default-notes-file my-gtd-misc-file)
 
-(setq org-agenda-files
-      (delete-dups
-       (append my-gtd-files
-               my-study-files
-               my-prj-files
-               (list my-gtd-misc-file
-                     my-gtd-proj-file
-                     my-gtd-study-file))))
+(setq org-agenda-files "~/custom/GTD/org_gtd_list.txt")
 
 (setq org-refile-targets
       (quote ((org-agenda-files :maxlevel . 2))))
