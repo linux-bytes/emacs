@@ -32,11 +32,15 @@
                          org
 			 org2ctex
 			 org-alert
+			 org-brain
+			 org-bullets
 			 org-edit-latex
 			 org-easy-img-insert
 			 org-mime
+			 org-msg
 			 org-pomodoro
 			 org-projectile
+			 org-super-agenda
 			 org-sidebar
                          ;; org-pdfview
                          jedi
