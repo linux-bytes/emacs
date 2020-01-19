@@ -14,6 +14,7 @@
 
 ;; Add Packages
 (defvar jerry/packages '(
+                         dts-mode
                          ;; --- Better Editor ---
                          hungry-delete
                          ;; Draw
@@ -84,6 +85,7 @@
                          ;; nodejs-repl
                          ;; exec-path-from-shell
                          ;; --- Themes ---
+                         zenburn-theme
                          monokai-theme
                          kaolin-themes
                          all-the-icons

@@ -32,8 +32,8 @@
 ;; (set-default-font "-unknown-Inconsolata-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
 (set-default-font "-PfEd-Inconsolata-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
 
-(require 'kaolin-themes)
-(load-theme 'kaolin-dark t)
+(require 'zenburn-theme)
+(load-theme 'zenburn t)
 
 ;; Apply treemacs customization for Kaolin themes, requires the all-the-icons package.
 (kaolin-treemacs-theme)
