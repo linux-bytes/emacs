@@ -47,6 +47,7 @@
    (ruby . t)
    ))
 (setq org-confirm-babel-evaluate nil)
+(setq org-html-postamble nil)
 
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
