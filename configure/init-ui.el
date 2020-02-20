@@ -36,7 +36,7 @@
 (load-theme 'zenburn t)
 
 ;; Apply treemacs customization for Kaolin themes, requires the all-the-icons package.
-(kaolin-treemacs-theme)
+;; (kaolin-treemacs-theme)
 
 ;; Or if you have use-package installed
 ;;(use-package kaolin-themes

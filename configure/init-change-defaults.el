@@ -20,9 +20,9 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;(setq initial-buffer-choice (lambda ()
-;			      (org-agenda-list)
-;			      (kill-buffer "*scratch*")
-;			      (kill-buffer "*Messages*")
-;			      (get-buffer "*Org Agenda*")))
+;                              (org-agenda-list)
+;                              (kill-buffer "*scratch*")
+;                              (kill-buffer "*Messages*")
+;                              (get-buffer "*Org Agenda*")))
 
 (provide 'init-change-defaults)

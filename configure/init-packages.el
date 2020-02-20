@@ -7,10 +7,10 @@
 (add-to-list 'package-archives '("gnu-cn" . "http://elpa.emacs-china.org/gnu/") t)
 
 ;; (add-to-list 'package-archives '(
-;;  				("gnu" . "https://elpa.gnu.org/packages/")
-;;  				("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-;;  				("gnu-cn" . "http://elpa.emacs-china.org/gnu/")
-;;  				))
+;;                                  ("gnu" . "https://elpa.gnu.org/packages/")
+;;                                  ("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+;;                                  ("gnu-cn" . "http://elpa.emacs-china.org/gnu/")
+;;                                  ))
 
 ;; Add Packages
 (defvar jerry/packages '(
@@ -29,26 +29,26 @@
                          ;;
                          htmlize
                          nlinum
-			 ;; For org mode
+                         ;; For org mode
                          org
-			 org2ctex
-			 org-alert
-			 org-brain
-			 org-bullets
-			 org-edit-latex
-			 org-easy-img-insert
-			 org-mime
-			 org-msg
-			 org-pomodoro
-			 org-projectile
-			 org-super-agenda
-			 org-sidebar
+                         org2ctex
+                         org-alert
+                         org-brain
+                         org-bullets
+                         org-edit-latex
+                         org-easy-img-insert
+                         org-mime
+                         org-msg
+                         org-pomodoro
+                         org-projectile
+                         org-super-agenda
+                         org-sidebar
                          ;; org-pdfview
+                         ;; --- Auto-completion ---
                          jedi
                          jedi-core
-                         ;; --- Auto-completion ---
                          company
-			 company-jedi
+                         company-jedi
                          company-auctex
                          smartparens
                          yasnippet
@@ -69,12 +69,12 @@
                          markdown-mode
                          markdown-toc
                          popwin
-			 ecb
+                         ecb
                          ;; For window jump
                          ace-window
                          ace-jump-buffer
-			 ;; thing-at-point
-			 xcscope
+                         ;; thing-at-point
+                         xcscope
                          pdf-tools
                          youdao-dictionary
                          ;; --- Major Mode ---
@@ -96,8 +96,8 @@
 
 (defun jerry/packages-installed-p ()
   (loop for pkg in jerry/packages
-	when (not (package-installed-p pkg)) do (return nil)
-	finally (return t)))
+        when (not (package-installed-p pkg)) do (return nil)
+        finally (return t)))
 
 (unless (jerry/packages-installed-p)
   (message "%s" "Refreshing package database...")
