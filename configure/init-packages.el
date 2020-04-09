@@ -2,15 +2,13 @@
 ;;; Commentary:
 (require 'cl)          ;; cl - Common Lisp Extension, needs by follow functions
 (require 'package)
-(package-initialize)
-(add-to-list 'package-archives '("melpa-cn" . "http://elpa.emacs-china.org/melpa/") t)
-(add-to-list 'package-archives '("gnu-cn" . "http://elpa.emacs-china.org/gnu/") t)
 
-;; (add-to-list 'package-archives '(
-;;                                  ("gnu" . "https://elpa.gnu.org/packages/")
-;;                                  ("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-;;                                  ("gnu-cn" . "http://elpa.emacs-china.org/gnu/")
-;;                                  ))
+;; (add-to-list 'package-archives '("melpa-cn" . "http://elpa.emacs-china.org/melpa/") t)
+;; (add-to-list 'package-archives '("gnu-cn" . "http://elpa.emacs-china.org/gnu/") t)
+
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(package-initialize)
 
 ;; Add Packages
 (defvar jerry/packages '(
@@ -29,7 +27,13 @@
                          ;;
                          htmlize
                          nlinum
-                         ;; For org mode
+                         ;; 开机画面
+                         dashboard
+			 ;; Project
+			 projectile
+                         ;; rST Document
+                         sphinx-frontend
+			 ;; For org mode
                          org
                          org2ctex
                          org-alert
@@ -43,6 +47,7 @@
                          org-projectile
                          org-super-agenda
                          org-sidebar
+                         ox-rst
                          ;; org-pdfview
                          ;; --- For Language ---
                          plantuml-mode
@@ -93,7 +98,9 @@
                          zenburn-theme
                          monokai-theme
                          kaolin-themes
+                         form-feed
                          all-the-icons
+			 all-the-icons-dired
                          ;; solarized-theme
                          ) "Default packages")
 
@@ -152,10 +159,6 @@
 ;; magic-flow
 ;;(require 'magit-gitflow)
 ;;(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
-
-;; For org2ctex
-(require 'org2ctex)
-(org2ctex-toggle t)
 
 (provide 'init-packages)
 ;;; init-packages.el ends here

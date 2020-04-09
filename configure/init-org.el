@@ -52,4 +52,8 @@
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
+;; For org2ctex
+(require 'org2ctex)
+(org2ctex-toggle t)
+
 (provide 'init-org)
