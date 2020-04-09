@@ -44,6 +44,10 @@
                          org-super-agenda
                          org-sidebar
                          ;; org-pdfview
+                         ;; --- For Language ---
+                         plantuml-mode
+                         ;; iamge
+                         eimp
                          ;; --- Auto-completion ---
                          jedi
                          jedi-core
@@ -58,6 +62,7 @@
                          flycheck-cstyle
                          flycheck-pycheckers
                          flycheck-pyflakes
+                         flycheck-plantuml
                          ;;magic-latex-buffer
                          ;;magic
                          ;;magithub
