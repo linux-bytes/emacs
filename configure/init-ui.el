@@ -30,7 +30,8 @@
 ;;                                 ))
 
 ;; (set-default-font "-unknown-Inconsolata-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
-(set-default-font "-PfEd-Inconsolata-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+;; (set-default-font "-PfEd-Inconsolata-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+(set-frame-font "Inconsolata-12")
 
 (require 'zenburn-theme)
 (load-theme 'zenburn t)
