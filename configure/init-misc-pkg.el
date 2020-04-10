@@ -26,6 +26,11 @@
 ;; (add-hook 'emacs-lisp-mode-hook 'form-feed-mode)
 ;; (add-hook 'dashboard-mode-hook 'form-feed-mode)
 
+(require 'page-break-lines)
+(set-fontset-font "fontset-default"
+                  (cons page-break-lines-char page-break-lines-char)
+                  (face-attribute 'default :family))
+
 (require 'dashboard)
 (dashboard-setup-startup-hook)
 
