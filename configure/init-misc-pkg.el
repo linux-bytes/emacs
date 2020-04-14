@@ -37,8 +37,8 @@
 ;; Set the title
 (setq dashboard-banner-logo-title "Come on! Jerry")
 ;; Set the banner
-;; (setq dashboard-startup-banner "~/.emacs.d/configure/mylogo.png")
-(setq dashboard-startup-banner 'logo)
+(setq dashboard-startup-banner "~/.emacs.d/configure/mylogo.png")
+;; (setq dashboard-startup-banner 'logo)
 ;; Value can be
 ;; 'official which displays the official emacs logo
 ;; 'logo which displays an alternative emacs logo
@@ -63,5 +63,8 @@
 ;;                                   (bookmarks . "book")))
 
 ;; (setq dashboard-set-navigator t)
+
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 (provide 'init-misc-pkg)

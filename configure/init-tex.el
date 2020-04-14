@@ -1,5 +1,9 @@
+;;; package --- Summary
+;;; Commentary:
+
 (require 'reftex)
 
+;;; Code:
 (setq TeX-command-extra-options "-shell-escape -synctex=1")
 (setq TeX-engine (quote xetex))
 
@@ -27,13 +31,13 @@
          ("itemize")))))
 
 (add-hook 'LaTeX-mode-hook (lambda()
-                               (turn-on-reftex)
-                               (yas-minor-mode)
-                               (yas-reload-all t)
-;;                               (latex-preview-pane-mode)
-                               (latex-extra-mode)
-;;                               (magic-latex-buffer)
-                           ))
+                             (turn-on-reftex)
+                             (yas-minor-mode)
+                             (yas-reload-all t)
+                             ;; (latex-preview-pane-mode)
+                             (latex-extra-mode)
+                             ;; (magic-latex-buffer)
+                             ))
 
 (setq latex-preview-pane-multifile-mode (quote auctex))
 (setq pdf-latex-command "xelatex")
@@ -42,4 +46,5 @@
 
 (setq reftex-plug-into-AUCTeX t)
 
+;;; init-tex.el ends here
 (provide 'init-tex)

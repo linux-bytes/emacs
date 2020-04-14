@@ -1,5 +1,7 @@
 ;;; package -- Summury
 ;;; Commentary:
+
+;;; Code:
 (require 'cl)          ;; cl - Common Lisp Extension, needs by follow functions
 (require 'package)
 
@@ -160,5 +162,5 @@
 ;;(require 'magit-gitflow)
 ;;(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
-(provide 'init-packages)
 ;;; init-packages.el ends here
+(provide 'init-packages)

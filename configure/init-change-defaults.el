@@ -1,3 +1,7 @@
+;;; package --- Summary
+;;; Commentary:
+
+;;; Code:
 
 ;; 修改被修改后, 自动加载修改后的文件
 (global-auto-revert-mode t)
@@ -25,4 +29,5 @@
 ;                              (kill-buffer "*Messages*")
 ;                              (get-buffer "*Org Agenda*")))
 
+;;; init-change-defaults ends here
 (provide 'init-change-defaults)

@@ -1,3 +1,8 @@
+;;; package --- Summary
+;;; Commentary:
+
+;;; Code:
+
 ;; 快速打开配置文件
 (defun open-init-file()
   (interactive)
@@ -48,4 +53,5 @@
 
 (global-set-key (kbd "M-s") 'ace-jump-buffer)
 
+;;; init-keybindings ends here
 (provide 'init-keybindings)

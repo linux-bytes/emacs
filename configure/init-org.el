@@ -1,3 +1,7 @@
+;;; package --- Summary
+;;; Commentary:
+
+;;; Code:
 (setq org-edit-src-content-indentation 0)
 (setq org-fontify-whole-heading-line   t)
 (setq org-support-shift-select         t)
@@ -56,4 +60,5 @@
 (require 'org2ctex)
 (org2ctex-toggle t)
 
+;;; init-org.el ends here
 (provide 'init-org)
