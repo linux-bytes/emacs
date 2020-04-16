@@ -53,5 +53,7 @@
 
 (global-set-key (kbd "M-s") 'ace-jump-buffer)
 
-;;; init-keybindings ends here
+(global-set-key (kbd "<f8>") 'neotree-toggle)
+
 (provide 'init-keybindings)
+;;; init-keybindings ends here

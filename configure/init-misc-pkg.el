@@ -1,5 +1,7 @@
 ;;; package -- Summury
 ;;; Just for some customise of other misc packages
+;;; Commentary:
+;;; Code:
 
 ;; graphviz-dot
 (setq-default graphviz-dot-auto-indent-on-braces t)
@@ -67,4 +69,9 @@
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+
+(diredfl-global-mode 1)
+
 (provide 'init-misc-pkg)
+;;; init-misc-pkg ends here

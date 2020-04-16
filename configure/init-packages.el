@@ -29,6 +29,9 @@
                          ;;
                          htmlize
                          nlinum
+                         ;; file management
+                         diredfl
+                         neotree
                          ;; 开机画面
                          dashboard
 			 ;; Project
@@ -162,5 +165,5 @@
 ;;(require 'magit-gitflow)
 ;;(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
-;;; init-packages.el ends here
 (provide 'init-packages)
+;;; init-packages.el ends here

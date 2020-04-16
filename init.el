@@ -1,3 +1,8 @@
+;;; package -- Summury
+;;; Commentary:
+
+;;; Code:
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -17,3 +22,4 @@
 
 (setq custom-file (expand-file-name "configure/custom.el" user-emacs-directory))
 (load-file custom-file)
+;;; init.el ends here
