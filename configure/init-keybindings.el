@@ -56,4 +56,4 @@
 (global-set-key (kbd "<f8>") 'neotree-toggle)
 
 (provide 'init-keybindings)
-;;; init-keybindings ends here
+;;; init-keybindings.el ends here

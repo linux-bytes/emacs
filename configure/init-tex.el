@@ -46,5 +46,5 @@
 
 (setq reftex-plug-into-AUCTeX t)
 
-;;; init-tex.el ends here
 (provide 'init-tex)
+;;; init-tex.el ends here

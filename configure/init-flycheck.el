@@ -4,5 +4,5 @@
 ;;; Code:
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-;;; init-flycheck.el ends here
 (provide 'init-flycheck)
+;;; init-flycheck.el ends here

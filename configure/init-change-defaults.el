@@ -29,5 +29,5 @@
 ;                              (kill-buffer "*Messages*")
 ;                              (get-buffer "*Org Agenda*")))
 
-;;; init-change-defaults ends here
 (provide 'init-change-defaults)
+;;; init-change-defaults.el ends here

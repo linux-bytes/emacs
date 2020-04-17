@@ -73,5 +73,14 @@
 
 (diredfl-global-mode 1)
 
+;;; (treemacs)
+;;; 
+;;; (treemacs-modify-theme "Default"
+;;;   :icon-directory (f-join treemacs-dir "icons/default")
+;;;   :config
+;;;   (progn
+;;;     (treemacs-create-icon :file "dir-open.png"   :fallback ""            :extensions (root))
+;;;     ))
+
 (provide 'init-misc-pkg)
-;;; init-misc-pkg ends here
+;;; init-misc-pkg.el ends here

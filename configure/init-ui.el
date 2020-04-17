@@ -1,3 +1,7 @@
+;;; package --- Summary
+;;; Commentary:
+
+;;; Code:
 ;; 关闭工具栏，tool-bar-mode 即为一个 Minor Mode
 (tool-bar-mode -1)
 
@@ -61,3 +65,4 @@
 ;; 加载 monokai 主题
 ;; (load-theme 'monokai t)
 (provide 'init-ui)
+;;; init-ui.el ends here

@@ -60,5 +60,5 @@
 (require 'org2ctex)
 (org2ctex-toggle t)
 
-;;; init-org.el ends here
 (provide 'init-org)
+;;; init-org.el ends here
