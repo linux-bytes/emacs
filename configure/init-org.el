@@ -54,11 +54,41 @@
 (setq org-html-postamble nil)
 
 (require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)
+                           (yas-minor-mode)
+                           ))
 
 ;; For org2ctex
 (require 'org2ctex)
 (org2ctex-toggle t)
+
+;;; (setq-default org2ctex-latex-default-packages-alist
+;;;               (quote
+;;;                (("AUTO" "inputenc" t ("pdflatex"))
+;;;                 ("T1" "fontenc" t ("pdflatex"))
+;;;                 ("" "graphicx" t nil)
+;;;                 ("" "grffile" t nil)
+;;;                 ("" "longtable" nil nil)
+;;;                 ("" "wrapfig" nil nil)
+;;;                 ("" "rotating" nil nil)
+;;;                 ("normalem" "ulem" t nil)
+;;;                 ("" "amsmath" t nil)
+;;;                 ("" "textcomp" t nil)
+;;;                 ("" "amssymb" t nil)
+;;;                 ("" "capt-of" nil nil)
+;;;                 ("" "hyperref" nil nil)
+;;;                 ("" "minted" nil nil))))
+
+(add-to-list 'org2ctex-latex-default-packages-alist '("" "minted" nil) t)
+
+(setq org2ctex-latex-commands
+      (quote
+	("xelatex -shell-escape -synctex=1 --shell-es-interaction nonstopmode -output-directory %o %f"
+	 "bibtex %b"
+	 "xelatex -shell-escape -synctex=1 -interaction nonstopmode -output-directory %o %f"
+	 "xelatex -shell-escape -synctex=1 -interaction nonstopmode -output-directory %o %f")))
+
+(setq org-latex-listings (quote minted))
 
 (provide 'init-org)
 ;;; init-org.el ends here
