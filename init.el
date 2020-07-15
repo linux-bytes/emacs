@@ -19,6 +19,7 @@
 (require 'init-tex)
 (require 'init-misc-pkg)
 (require 'init-keybindings)
+(require 'init-program)
 
 (setq custom-file (expand-file-name "configure/custom.el" user-emacs-directory))
 (load-file custom-file)
