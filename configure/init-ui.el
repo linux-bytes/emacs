@@ -37,8 +37,41 @@
 ;; (set-default-font "-PfEd-Inconsolata-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
 (set-frame-font "Inconsolata-12")
 
+(require 'all-the-icons-gnus)
+(all-the-icons-gnus-setup)
+
 (require 'zenburn-theme)
 (load-theme 'zenburn t)
+
+(centaur-tabs-mode t)
+(global-set-key (kbd "C-<prior>") 'centaur-tabs-backward)
+(global-set-key (kbd "C-<next>")  'centaur-tabs-forward)
+
+(setq centaur-tabs-style "wave")
+(setq centaur-tabs-height 32)
+(setq centaur-tabs-set-icons t)
+(setq centaur-tabs-gray-out-icons 'buffer)
+(setq centaur-tabs-set-bar 'over)
+
+;; (setq centaur-tabs-set-bar 'under)
+;; (setq x-underline-at-descent-line t)
+
+(setq centaur-tabs-set-modified-marker t)
+
+;; (centaur-tabs-change-fonts "arial" 160)
+
+;; Disable centaur-tabs in dired mode
+(add-hook 'dired-mode-hook 'centaur-tabs-local-mode)
+(add-hook 'dashboard-mode-hook 'centaur-tabs-local-mode)
+(add-hook 'calendar-mode-hook 'centaur-tabs-local-mode)
+(add-hook 'org-agenda-mode-hook 'centaur-tabs-local-mode)
+(add-hook 'custom-mode-hook 'centaur-tabs-local-mode)
+(add-hook 'cscope-minor-mode-hook 'centaur-tabs-local-mode)
+(add-hook 'helpful-mode-hook 'centaur-tabs-local-mode)
+(add-hook 'term-mode-hook 'centaur-tabs-local-mode)
+
+;; (setq centaur-tabs--buffer-show-groups t)
+(setq centaur-tabs-cycle-scope 'tabs)
 
 ;; Apply treemacs customization for Kaolin themes, requires the all-the-icons package.
 ;; (kaolin-treemacs-theme)

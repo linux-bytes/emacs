@@ -34,11 +34,11 @@
                          neotree
                          ;; 开机画面
                          dashboard
-			 ;; Project
-			 projectile
+                         ;; Project
+                         projectile
                          ;; rST Document
                          sphinx-frontend
-			 ;; For org mode
+                         ;; For org mode
                          org
                          org2ctex
                          org-alert
@@ -88,6 +88,7 @@
                          ;; For window jump
                          ace-window
                          ace-jump-buffer
+                         centaur-tabs
                          ;; thing-at-point
                          xcscope
                          pdf-tools
@@ -99,13 +100,20 @@
                          ;; --- Minor Mode ---
                          ;; nodejs-repl
                          ;; exec-path-from-shell
+                         ;; MISC
+                         ;; ag
+                         ;; use-package
+                         ;; treemacs
+                         ;; treemacs-icons-dired
+                         ;; treemacs-projectile
                          ;; --- Themes ---
                          zenburn-theme
                          monokai-theme
                          kaolin-themes
                          form-feed
                          all-the-icons
-			 all-the-icons-dired
+                         all-the-icons-dired
+                         all-the-icons-gnus
                          ;; solarized-theme
                          ) "Default packages")
 
