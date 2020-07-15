@@ -101,7 +101,7 @@
                          ;; nodejs-repl
                          ;; exec-path-from-shell
                          ;; MISC
-                         ;; ag
+                         ag
                          ;; use-package
                          ;; treemacs
                          ;; treemacs-icons-dired
