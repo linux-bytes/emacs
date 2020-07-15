@@ -16,6 +16,8 @@
 ;; (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-item 10)
+(add-to-list 'recentf-exclude
+             (expand-file-name "~/.emacs.d/elpa/"))
 
 ;; (electric-indent-mode t)   default
 ;; (delete-selection-mode t)  default
