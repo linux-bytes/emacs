@@ -12,6 +12,9 @@
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (package-initialize)
 
+(setq user-full-name "Jerry Zhou")
+(setq user-mail-address "zhou_c@hoperun.com")
+
 ;; Add Packages
 (defvar jerry/packages '(
                          dts-mode

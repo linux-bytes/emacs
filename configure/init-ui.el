@@ -60,6 +60,8 @@
 
 ;; (centaur-tabs-change-fonts "arial" 160)
 
+(setq centaur-tabs-show-navigation-buttons t)
+
 ;; Disable centaur-tabs in dired mode
 (add-hook 'dired-mode-hook 'centaur-tabs-local-mode)
 (add-hook 'dashboard-mode-hook 'centaur-tabs-local-mode)
@@ -69,6 +71,7 @@
 (add-hook 'cscope-minor-mode-hook 'centaur-tabs-local-mode)
 (add-hook 'helpful-mode-hook 'centaur-tabs-local-mode)
 (add-hook 'term-mode-hook 'centaur-tabs-local-mode)
+(add-hook 'image-mode-hook 'centaur-tabs-local-mode)
 
 ;; (setq centaur-tabs--buffer-show-groups t)
 (setq centaur-tabs-cycle-scope 'tabs)
