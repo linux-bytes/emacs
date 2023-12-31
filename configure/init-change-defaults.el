@@ -13,15 +13,8 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
-;; (require 'recentf)
-(recentf-mode 1)
-(setq recentf-max-menu-item 10)
-(add-to-list 'recentf-exclude
-             (expand-file-name "~/.emacs.d/elpa/"))
-
 ;; (electric-indent-mode t)   default
 ;; (delete-selection-mode t)  default
-(add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
