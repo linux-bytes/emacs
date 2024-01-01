@@ -36,12 +36,12 @@
              :ensure t
              )
 
-(use-package nlinum
-             :ensure t
-             :config
-             ;; 显示行号
-             (global-nlinum-mode 1)
-             )
+;; (use-package nlinum
+;;              :ensure t
+;;              :config
+;;              ;; 显示行号
+;;              (global-nlinum-mode 1)
+;;              )
 
 (use-package popwin
              :ensure t

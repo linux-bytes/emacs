@@ -48,42 +48,87 @@
              )
 
 (use-package centaur-tabs
-             :ensure t
+             :demand
+             :init
+             (setq centaur-tabs-enable-key-bindings t)
              :config
-
+             (setq centaur-tabs-style "box"
+                   centaur-tabs-height 32
+                   centaur-tabs-set-icons t
+                   centaur-tabs-show-new-tab-button t
+                   centaur-tabs-set-modified-marker t
+                   centaur-tabs-modified-marker     "*"
+                   centaur-tabs-show-navigation-buttons t
+                   centaur-tabs-set-bar 'under
+                   centaur-tabs-show-count nil
+                   ;; centaur-tabs-label-fixed-length 15
+                   ;; centaur-tabs-gray-out-icons 'buffer
+                   ;; centaur-tabs-plain-icons t
+                   x-underline-at-descent-line t
+                   centaur-tabs-left-edge-margin nil)
+             (centaur-tabs-change-fonts (face-attribute 'default :font) 110)
+             (centaur-tabs-headline-match)
+             ;; (centaur-tabs-enable-buffer-alphabetical-reordering)
+             ;; (setq centaur-tabs-adjust-buffer-order t)
              (centaur-tabs-mode t)
-             (global-set-key (kbd "C-<prior>") 'centaur-tabs-backward)
-             (global-set-key (kbd "C-<next>")  'centaur-tabs-forward)
+             (setq uniquify-separator "/")
+             (setq uniquify-buffer-name-style 'forward)
+             (defun centaur-tabs-buffer-groups ()
+               "`centaur-tabs-buffer-groups' control buffers' group rules.
 
-             (setq centaur-tabs-style "wave")
-             (setq centaur-tabs-height 32)
-             (setq centaur-tabs-set-icons t)
-             (setq centaur-tabs-gray-out-icons 'buffer)
-             (setq centaur-tabs-set-bar 'over)
+               Group centaur-tabs with mode if buffer is derived from `eshell-mode' `emacs-lisp-mode'
+	       `dired-mode' `org-mode' `magit-mode'.
+               All buffer name start with * will group to \"Emacs\".
+               Other buffer group by `centaur-tabs-get-group-name' with project name."
+               (list
+                 (cond
+                   ;; ((not (eq (file-remote-p (buffer-file-name)) nil))
+                   ;; "Remote")
+                   ((or (string-equal "*" (substring (buffer-name) 0 1))
+                        (memq major-mode '(magit-process-mode
+                                            magit-status-mode
+                                            magit-diff-mode
+                                            magit-log-mode
+                                            magit-file-mode
+                                            magit-blob-mode
+                                            magit-blame-mode
+                                            )))
+                    "Emacs")
+                   ((derived-mode-p 'prog-mode)
+                    "Editing")
+                   ((derived-mode-p 'dired-mode)
+                    "Dired")
+                   ((memq major-mode '(helpful-mode
+                                        help-mode))
+                    "Help")
+                   ((memq major-mode '(org-mode
+                                        org-agenda-clockreport-mode
+                                        org-src-mode
+                                        org-agenda-mode
+                                        org-beamer-mode
+                                        org-indent-mode
+                                        org-bullets-mode
+                                        org-cdlatex-mode
+                                        org-agenda-log-mode
+                                        diary-mode))
+                    "OrgMode")
+                   (t (centaur-tabs-get-group-name (current-buffer))))))
 
-             ;; (setq centaur-tabs-set-bar 'under)
-             ;; (setq x-underline-at-descent-line t)
+             :hook
+             (dashboard-mode  . centaur-tabs-local-mode)
+             (term-mode       . centaur-tabs-local-mode)
+             (calendar-mode   . centaur-tabs-local-mode)
+             (org-agenda-mode . centaur-tabs-local-mode)
 
-             (setq centaur-tabs-set-modified-marker t)
-
-             ;; (centaur-tabs-change-fonts "arial" 160)
-
-             (setq centaur-tabs-show-navigation-buttons t)
-
-             ;; Disable centaur-tabs in dired mode
-             (add-hook 'dired-mode-hook 'centaur-tabs-local-mode)
-             (add-hook 'dashboard-mode-hook 'centaur-tabs-local-mode)
-             (add-hook 'calendar-mode-hook 'centaur-tabs-local-mode)
-             (add-hook 'org-agenda-mode-hook 'centaur-tabs-local-mode)
-             (add-hook 'custom-mode-hook 'centaur-tabs-local-mode)
-             (add-hook 'cscope-minor-mode-hook 'centaur-tabs-local-mode)
-             (add-hook 'helpful-mode-hook 'centaur-tabs-local-mode)
-             (add-hook 'term-mode-hook 'centaur-tabs-local-mode)
-             (add-hook 'image-mode-hook 'centaur-tabs-local-mode)
-
-             ;; (setq centaur-tabs--buffer-show-groups t)
-             (setq centaur-tabs-cycle-scope 'tabs)
-             )
+             :bind
+             ("C-<prior>"   . centaur-tabs-backward)
+             ("C-<next>"    . centaur-tabs-forward)
+             ("C-S-<prior>" . centaur-tabs-move-current-tab-to-left)
+             ("C-S-<next>"  . centaur-tabs-move-current-tab-to-right)
+             ;; (:map evil-normal-state-map
+             ;;       ("g t" . centaur-tabs-forward)
+             ;;       ("g T" . centaur-tabs-backward))
+	     )
 
 (use-package dashboard
              :ensure t
@@ -121,9 +166,6 @@
 
              ;; (setq dashboard-set-navigator t)
              )
-
-
-
 
 ;; (use-package zenburn-theme
 ;;              :ensure t
