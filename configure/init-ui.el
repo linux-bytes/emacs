@@ -232,7 +232,7 @@
                    ;; '((matches . (extrabold))
                    ;;   (selection . (semibold italic text-also)))
 
-                   modus-themes-completions '((t . (thin italic)))
+                   ;; modus-themes-completions '((t . (thin italic)))
 
                    modus-themes-org-blocks  'gray-background ; {nil,'gray-background,'tinted-background}
 
@@ -293,11 +293,14 @@
              ;;         (bg-heading-1 bg-blue-nuanced)
              ;;         (overline-heading-1 blue)))
 
-             (setq modus-themes-common-palette-overrides
-                   '((bg-heading-1 "#c0deff")
-                     (bg-heading-2 bg-red-nuanced)
-                     (bg-heading-3 bg-green-nuanced)
-                     (overline-heading-1 nil)))
+             ;; modus-operandi-list-colors
+             ;; (setq modus-themes-common-palette-overrides
+             ;;      '((bg-heading-1 bg-green-intense) ;; "PaleGreen1")
+             ;;        (bg-heading-2 bg-red-subtle) ;; bg-red-nuanced)
+             ;;        (bg-heading-3 bg-magenta-subtle) ;;bg-graph-blue-0) ;; bg-green-nuanced)
+	     ;;        (overline-heading-1  "blue")
+	     ;;        (underline-heading-2 "red")
+             ;;        (overline-heading-3  "blue")))
 
              ;; (setq modus-themes-headings
              ;;          '((1 . (variable-pitch 1.5))

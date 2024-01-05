@@ -23,11 +23,11 @@
                    '((sequence "未开始(p!)" "进行中(g!)" "暂停中(b!)" "|" "已完成(d!)" "已取消(c@/!)")))
 
              (setq org-todo-keyword-faces
-                   '(("未开始" .  (:background "red"    :foreground "white" :weight bold))
-                     ("进行中" .  (:background "orange" :foreground "green" :weight thin))
-                     ("暂停中" .  (:background "blue"   :foreground "white" :weight bold))
-                     ("已完成" .  (:background "gray"   :foreground "black" :weight thin))
-                     ("已取消" .  (:background "gray"   :foreground "black" :weight bold))
+                   '(("未开始" .  (:background "red"         :foreground "white" :weight bold))
+                     ("进行中" .  (:background "magenta"     :foreground "white" :weight bold))
+                     ("暂停中" .  (:background "blue"        :foreground "white" :weight bold))
+                     ("已完成" .  (:background "dodger blue" :foreground "white" :weight bold))
+                     ("已取消" .  (:background "PaleGreen4"  :foreground "white" :weight bold))
                      ))
 
              (setq org-priority-faces '((?A . (:foreground "red"   :weight bold))
@@ -218,12 +218,16 @@
 
              (setq org-modern-label-border 0.3)
              ;; (setq org-modern-label-border nil)
-             (setq org-modern-todo t)
+             (setq org-modern-todo nil)
              (setq org-modern-keyword nil)
-             (setq org-modern-priority t)
+             (setq org-modern-priority nil)
              (setq org-hide-emphasis-markers t)        ;; orgmode 的着重标记都不显示
              (setq org-pretty-entities t)
              (setq org-ellipsis "…")
+
+	     (setq org-modern-todo-faces
+		   (quote (("TODO" :background "red"
+			           :foreground "yellow"))))
              )
 
 ;; (set-face-attribute 'default nil :family "Iosevka")
