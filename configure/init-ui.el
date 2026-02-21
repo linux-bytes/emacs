@@ -329,7 +329,7 @@
 ;;              :ensure t
 ;;              :config
 ;;              (load-theme 'gruvbox-dark-medium t)
-;;              )        
+;;              )
 
 (provide 'init-ui)
 ;;; init-ui.el ends here

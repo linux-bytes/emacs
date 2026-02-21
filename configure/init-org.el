@@ -20,19 +20,21 @@
              ;; (setq org-indent-indentation-per-level 2)
 
              (setq org-todo-keywords
-                   '((sequence "未开始(p!)" "进行中(g!)" "暂停中(b!)" "|" "已完成(d!)" "已取消(c@/!)")))
+                   '((sequence "TODO(p!)" "RUNNING(g!)" "HOLD(b!)" "|" "DONE(d!)" "CANCELED(c@/!)")))
 
              (setq org-todo-keyword-faces
-                   '(("未开始" .  (:background "red"         :foreground "white" :weight bold))
-                     ("进行中" .  (:background "magenta"     :foreground "white" :weight bold))
-                     ("暂停中" .  (:background "blue"        :foreground "white" :weight bold))
-                     ("已完成" .  (:background "dodger blue" :foreground "white" :weight bold))
-                     ("已取消" .  (:background "PaleGreen4"  :foreground "white" :weight bold))
+                   '(("TODO" .      (:background "red"         :foreground "white" :weight bold))
+                     ("RUNNING" .   (:background "magenta"     :foreground "white" :weight bold))
+                     ("HOLD" .      (:background "blue"        :foreground "white" :weight bold))
+                     ("DONE" .      (:background "dodger blue" :foreground "white" :weight bold))
+                     ("CANCELED" .  (:background "PaleGreen4"  :foreground "white" :weight bold))
                      ))
 
              (setq org-priority-faces '((?A . (:foreground "red"   :weight bold))
                                         (?B . (:foreground "blue"  :weight bold))
-                                        (?C . (:foreground "black" :weight bold))))
+                                        (?C . (:foreground "black" :weight bold))
+                                        (?D . (:foreground "white" :weight bold))
+                                        ))
 
              (setq org-default-notes-file my-gtd-misc-file)
              (setq org-agenda-files "~/custom/GTD/org_gtd_list.txt")
@@ -110,10 +112,10 @@
 
              (setq org2ctex-latex-commands
                    (quote
-                     ("xelatex -shell-escape -synctex=1 --shell-es-interaction nonstopmode -output-directory %o %f"
+                     ("xelatex -synctex=1 --shell-es-interaction nonstopmode -output-directory %o %f"
                       "bibtex %b"
-                      "xelatex -shell-escape -synctex=1 -interaction nonstopmode -output-directory %o %f"
-                      "xelatex -shell-escape -synctex=1 -interaction nonstopmode -output-directory %o %f")))
+                      "xelatex -synctex=1 -interaction nonstopmode -output-directory %o %f"
+                      "xelatex -synctex=1 -interaction nonstopmode -output-directory %o %f")))
 
              (setq org-latex-listings (quote minted))
              )
@@ -207,6 +209,14 @@
              :after org
              )
 
+(use-package org-fancy-priorities
+            :ensure t
+            :hook
+            (org-mode . org-fancy-priorities-mode)
+            :config
+            (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕"))
+            ) 
+
 (use-package org-modern
              :ensure t
              :after org
@@ -234,18 +244,27 @@
                                                  ("[X]" . ?)))
                                          (prettify-symbols-mode)))
 
-             (setq org-modern-label-border 0.3)
-             ;; (setq org-modern-label-border nil)
-             (setq org-modern-todo nil)
-             (setq org-modern-keyword nil)
-             (setq org-modern-priority nil)
-             (setq org-hide-emphasis-markers t)        ;; orgmode 的着重标记都不显示
-             (setq org-pretty-entities t)
-             (setq org-ellipsis "…")
+	     (setq
+	       org-modern-star '("◉" "○" "✸" "✿" "✦" "◆")   ; 自定义标题符号
+	       org-modern-todo nil                          ; 自带的美化多一条线
+	       org-modern-keyword t
+	       org-modern-priority nil                      ; 美化优先级
+	       org-modern-timestamp t                       ; 美化时间戳
+	       org-modern-tag t                             ; 美化标签
+	       org-modern-table-align t                     ; 自动对齐表格
+	       org-modern-checkbox nil                      ; 启用复选框美化
+	       org-modern-label-border 0.3
+	       )
+
+	     (setq
+	       org-pretty-entities t
+	       org-hide-emphasis-markers t                  ; orgmode 的着重标记都不显示
+	       org-ellipsis "…"
+	       )
 
 	     (setq org-modern-todo-faces
-		   (quote (("TODO" :background "red"
-			           :foreground "yellow"))))
+                   (quote (("TODO" :background "red"
+                                   :foreground "yellow"))))
              )
 
 ;; (set-face-attribute 'default nil :family "Iosevka")
