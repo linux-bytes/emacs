@@ -148,14 +148,14 @@
 (use-package org-tag-beautify
              :ensure t
              :after org
-	     :config
-	     (org-tag-beautify-mode 1)
+	       :config
+	       (org-tag-beautify-mode 1)
              )
 
 (use-package org-side-tree
-              :ensure t
-              :after org
-              )
+             :ensure t
+             :after org
+             )
 
 (use-package org-edit-latex
              :ensure t
@@ -266,6 +266,25 @@
                    (quote (("TODO" :background "red"
                                    :foreground "yellow"))))
              )
+
+(use-package org-roam
+             :ensure t
+             :after org
+             :custom
+             ;; (org-roam-directory (file-truename "~/custom/org-roam/"))
+             ;; (org-roam-db-location (expand-file-name "org-roam.db" user-emacs-directory))
+             (org-roam-directory (file-truename "~/custom/org-roam/org-files/"))
+             (org-roam-db-location (expand-file-name "../org-roam.db" org-roam-directory))
+             :bind (("C-c n l" . org-roam-buffer-toggle)
+                    ("C-c n f" . org-roam-node-find)
+                    ("C-c n g" . org-roam-graph)
+                    ("C-c n i" . org-roam-node-insert)
+                    ("C-c n c" . org-roam-capture)
+                    ("C-c n b" . org-roam-switch-to-buffer)
+                    ("C-c n t" . org-roam-tag-add)
+                    ("C-c n a" . org-roam-alias-add))
+             :config
+             (org-roam-db-autosync-mode))
 
 ;; (set-face-attribute 'default nil :family "Iosevka")
 ;; (set-face-attribute 'variable-pitch nil :family "Iosevka Aile")
