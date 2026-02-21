@@ -73,6 +73,7 @@
              (setq org-confirm-babel-evaluate nil)
              (setq org-html-postamble nil)
 
+             ;; (add-hook 'org-mode-hook #'org-indent-mode)
              (add-hook 'org-mode-hook #'yas-minor-mode)
 
              (global-set-key (kbd "C-c l")    'org-store-link)
@@ -127,13 +128,13 @@
              :after org
              )
 
-;; (use-package org-superstar
-;;              :ensure t
-;;              :after org
-;;              :config
-;;              (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
-;;              (add-hook 'org-mode-hook 'turn-on-auto-fill)
-;;              )
+(use-package org-superstar
+             :ensure t
+             :after org
+             :config
+             (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+             (add-hook 'org-mode-hook 'turn-on-auto-fill)
+             )
 
 ;; (use-package org-bars
 ;;              :ensure t
@@ -141,6 +142,18 @@
 ;;              :config
 ;;              (add-hook 'org-mode-hook #'org-bars-mode)
 ;;              )
+
+(use-package org-tag-beautify
+             :ensure t
+             :after org
+	     :config
+	     (org-tag-beautify-mode 1)
+             )
+
+(use-package org-side-tree
+              :ensure t
+              :after org
+              )
 
 (use-package org-edit-latex
              :ensure t
@@ -182,11 +195,16 @@
              :after org
              )
 
-(use-package org-bullets
+;; (use-package org-bullets
+;;              :ensure t
+;;              :after org
+;;              :config
+;;              (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+;;              )
+
+(use-package ox-rst
              :ensure t
              :after org
-             :config
-             (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
              )
 
 (use-package org-modern

@@ -7,6 +7,7 @@
              :ensure reftex
              :ensure latex-extra
              :ensure magic-latex-buffer
+	     :ensure auto-complete-auctex
 
              :config
              (add-hook 'LaTeX-mode-hook #'latex-extra-mode)
@@ -23,8 +24,14 @@
                                           ;; (magic-latex-buffer)
                                           ))
 
-             (setq TeX-command-extra-options "-shell-escape -synctex=1")
-             (setq TeX-engine (quote xetex))
+             (setq TeX-command-default "XeLaTeX")
+             (setq-default TeX-command-extra-options "-synctex=1")
+             (setq-default TeX-engine (quote xetex))
+
+             (setq TeX-source-correlate-start-server t)
+             (setq TeX-source-correlate-method 'synctex)
+             (setenv "SYNCTEX_EDITOR" "emacsclient --no-wait +%l %f")
+             (add-hook 'LaTeX-mode-hook #'TeX-source-correlate-mode)
 
              (setq TeX-clean-confirm   nil)
 

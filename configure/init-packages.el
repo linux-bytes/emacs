@@ -8,8 +8,14 @@
 ;;                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 ;; (add-to-list 'package-archives '("melpa-cn" . "http://elpa.emacs-china.org/melpa/") t)
 ;; (add-to-list 'package-archives '("gnu-cn" . "http://elpa.emacs-china.org/gnu/") t)
-(add-to-list 'package-archives '("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/") t)
-(add-to-list 'package-archives '("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/") t)
+(add-to-list 'package-archives '("melpa-cn"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/") t)
+(add-to-list 'package-archives '("gnu-cn"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/") t)
+(add-to-list 'package-archives '("nongnu-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/") t)
+
+(setq package-archive-priorities
+      '(("gnu-cn"    . 10)
+        ("nongnu-cn" . 9)
+        ("melpa-cn"  . 5)))
 
 (package-initialize)
 

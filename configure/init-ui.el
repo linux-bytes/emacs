@@ -325,5 +325,11 @@
 
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
+;; (use-package gruvbox-theme
+;;              :ensure t
+;;              :config
+;;              (load-theme 'gruvbox-dark-medium t)
+;;              )        
+
 (provide 'init-ui)
 ;;; init-ui.el ends here
