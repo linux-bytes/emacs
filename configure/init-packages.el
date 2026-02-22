@@ -73,19 +73,19 @@
              (global-hungry-delete-mode t)
              )
 
-(use-package company
-             :ensure jedi
-             :ensure jedi-core
-             :ensure company-jedi
-             :ensure company-auctex
-  
-             :init nil
-             :config
-             ;; 开启全局 Company 补全
-             (global-company-mode 1)
-             (setq company-idle-delay 0.08)
-             (setq company-minimum-prefix-length 1)
-             )
+;; (use-package company
+;;              :ensure jedi
+;;              :ensure jedi-core
+;;              :ensure company-jedi
+;;              :ensure company-auctex
+;;
+;;              :init nil
+;;              :config
+;;              ;; 开启全局 Company 补全
+;;              (global-company-mode 1)
+;;              (setq company-idle-delay 0.08)
+;;              (setq company-minimum-prefix-length 1)
+;;              )
 
 (use-package pdf-tools
              :ensure t
@@ -103,9 +103,38 @@
              )
 
 (use-package yasnippet
-             :ensure yasnippet
-             :ensure yasnippet-snippets
-             )
+             :ensure t
+             :config
+             (yas-reload-all)
+             (yas-global-mode 1))
+
+(use-package yasnippet-snippets
+             :ensure t
+             :after yasnippet)
+
+(use-package corfu
+             :ensure t
+             :init
+             (global-corfu-mode))
+
+(use-package lsp-mode
+             :ensure t
+             :commands (lsp lsp-deferred)
+             :hook ((prog-mode . lsp-deferred)
+                    (LaTeX-mode . lsp)   ;; 进入 LaTeX 模式时自动启动 lsp-mode
+                   )
+             :init
+             (setq lsp-keymap-prefix "C-c l")
+	     :config
+	     ;; 如果你希望 lsp-mode 也接管补全，可以关闭其自带的次要模式，
+	     ;; 让它只提供数据，由 Corfu 来展示。
+	     (setq lsp-completion-provider :capf)  ;; 关键：通过 CAPF 提供补全
+	     )
+
+;; 确保 lsp-ui (可选) 提供额外的视觉效果
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
 
 (use-package markdown-mode
              :ensure markdown-toc
@@ -119,11 +148,11 @@
 ;;              :ensure magit-gitflow
 ;;              :ensure magit-gerrit
 ;;              :ensure magit-find-file
-;; 
+;;
 ;;              :config
 ;;              ;; magic-find-file
 ;;              (global-set-key (kbd "C-c p") 'magit-find-file-completing-read)
-;; 
+;;
 ;;              ;; magic-flow
 ;;              (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 ;;              )
