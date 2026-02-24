@@ -8,154 +8,109 @@
 ;;                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 ;; (add-to-list 'package-archives '("melpa-cn" . "http://elpa.emacs-china.org/melpa/") t)
 ;; (add-to-list 'package-archives '("gnu-cn" . "http://elpa.emacs-china.org/gnu/") t)
-(add-to-list 'package-archives '("melpa-cn"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/") t)
-(add-to-list 'package-archives '("gnu-cn"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/") t)
-(add-to-list 'package-archives '("nongnu-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/") t)
 
+;; 使用清华镜像源（一次性覆盖，避免重复添加）
+(setq package-archives
+      '(("gnu-cn"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+        ("nongnu-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+        ("melpa-cn"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+        ("gnu"       . "https://elpa.gnu.org/packages/")
+        ("nongnu"    . "https://elpa.nongnu.org/nongnu/")
+        ("melpa"     . "https://melpa.org/packages/")
+       )
+)
+
+;; 设置优先级：GNU > NonGNU > MELPA
 (setq package-archive-priorities
       '(("gnu-cn"    . 10)
+        ("nongnu"    . 10)
         ("nongnu-cn" . 9)
-        ("melpa-cn"  . 5)))
+        ("melpa-cn"  . 5)
+       )
+)
 
+;; 初始化包管理系统
 (package-initialize)
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+;; 确保包列表非空（首次运行或长期未更新时刷新）
+(unless package-archive-contents (package-refresh-contents))
 
-(eval-and-compile
-  (setq use-package-always-ensure t
-        use-package-expand-minimally t))
+;; 确保 use-package 已安装
+(unless (package-installed-p 'use-package)
+        (package-refresh-contents)   ; 刷新以保证能获取最新 use-package
+        (package-install 'use-package)
+)
+
+;; use-package 全局设置（放在 require 之前或之后均可）
+(setq use-package-always-ensure t
+      use-package-expand-minimally t)
 
 (require 'use-package)
 
-(use-package exec-path-from-shell
-             :ensure t
-             :config
-             (exec-path-from-shell-initialize)
-             ;; Find Executable Path on OS X
-             ;; (when (memq window-system '(mac ns))
-             ;;   (exec-path-from-shell-initialize))
-             )
+;; (use-package esup
+;;              :ensure t
+;; )
 
-(use-package htmlize
-             :ensure t
-             )
-
-;; (use-package nlinum
+;; (use-package benchmark-init
 ;;              :ensure t
 ;;              :config
-;;              ;; 显示行号
-;;              (global-nlinum-mode 1)
-;;              )
+;;              ;; 启用记录
+;;              (benchmark-init/activate)
+;;              ;; 可选：在关闭 Emacs 时保存记录到文件（便于后续分析）
+;;              (add-hook 'after-init-hook 'benchmark-init/deactivate)
+;; )
 
-(use-package popwin
+;; 配置 exec-path-from-shell（仅在 macOS 上启用，若需要 Linux 也可去除条件）
+(use-package exec-path-from-shell
              :ensure t
+
+             :if (memq system-type '(darwin))   ; 仅 macOS 启用，Linux 通常无需
+
              :config
-             ;; 开启 popwin
-             (popwin-mode t)
-             )
+             (exec-path-from-shell-initialize)
+)
 
-(use-package smartparens
-             :ensure t
-             :config
-             ;; 括号, 双引号等, 自动补上
-             (smartparens-global-mode t)
-             ;; 在 lisp mode 下, 不要自动插入另一个单引号
-             (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
-             (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
-             )
+;; =========================================
+;; 基础行为优化
+;; =========================================
 
-(use-package hungry-delete
-             :ensure t
-             :config
-             ;; (require 'hungry-delete-mode)
-             (global-hungry-delete-mode t)
-             )
+;; 当文件在外部被修改时，自动在缓冲区中重载
+(global-auto-revert-mode 1)           ; 启用全局自动重载模式
 
-;; (use-package company
-;;              :ensure jedi
-;;              :ensure jedi-core
-;;              :ensure company-jedi
-;;              :ensure company-auctex
-;;
-;;              :init nil
-;;              :config
-;;              ;; 开启全局 Company 补全
-;;              (global-company-mode 1)
-;;              (setq company-idle-delay 0.08)
-;;              (setq company-minimum-prefix-length 1)
-;;              )
+;; 缩进使用空格代替 Tab（全局默认值）
+(setq-default indent-tabs-mode nil)   ; 所有新缓冲区的缩进均为空格
 
-(use-package pdf-tools
-             :ensure t
-             :config
-             ;; Install pdf-tools
-             (pdf-tools-install)
-             )
+;; 关闭 Emacs 自动生成的备份文件 (~ 文件)
+(setq make-backup-files nil)          ; 禁止创建 #file# 备份
+(setq auto-save-default nil)          ; 禁止自动保存（每 300 击键的临时保存）
 
-(use-package dts-mode
-             :ensure t
-             )
+;; 以下两项在 Emacs 25+ 中默认已启用，无需显式开启
+;; (electric-indent-mode 1)   ; 自动缩进（如键入 } 后自动对齐）
+;; (delete-selection-mode 1)  ; 选中文本后直接输入可替换选中内容
 
-(use-package sphinx-frontend
-             :ensure t
-             )
+;; 将冗长的 yes/no 确认简化为 y/n
+(fset 'yes-or-no-p 'y-or-n-p)         ; 所有需要“yes/no”的地方变成“y/n”
 
-(use-package yasnippet
-             :ensure t
-             :config
-             (yas-reload-all)
-             (yas-global-mode 1))
+(setq gc-cons-threshold most-positive-fixnum)
+(add-hook 'after-init-hook (lambda () (setq gc-cons-threshold 800000))) ; 默认值
 
-(use-package yasnippet-snippets
-             :ensure t
-             :after yasnippet)
+;; 快速打开配置文件
+(defun open-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/configure/init-packages.el")
+)
 
-(use-package corfu
-             :ensure t
-             :init
-             (global-corfu-mode))
+;; 这一行代码，将函数 open-init-file 绑定到 <f2> 键上
+(global-set-key (kbd "<f2>")     'open-init-file)
 
-(use-package lsp-mode
-             :ensure t
-             :commands (lsp lsp-deferred)
-             :hook ((prog-mode . lsp-deferred)
-                    (LaTeX-mode . lsp)   ;; 进入 LaTeX 模式时自动启动 lsp-mode
-                   )
-             :init
-             (setq lsp-keymap-prefix "C-c l")
-	     :config
-	     ;; 如果你希望 lsp-mode 也接管补全，可以关闭其自带的次要模式，
-	     ;; 让它只提供数据，由 Corfu 来展示。
-	     (setq lsp-completion-provider :capf)  ;; 关键：通过 CAPF 提供补全
-	     )
 
-;; 确保 lsp-ui (可选) 提供额外的视觉效果
-(use-package lsp-ui
-  :ensure t
-  :commands lsp-ui-mode)
-
-(use-package markdown-mode
-             :ensure markdown-toc
-             )
-
-;; (use-package magit
-;;              :ensure magit
-;;              :ensure magithub
-;;              :ensure magit-imerge
-;;              :ensure magit-todos
-;;              :ensure magit-gitflow
-;;              :ensure magit-gerrit
-;;              :ensure magit-find-file
-;;
-;;              :config
-;;              ;; magic-find-file
-;;              (global-set-key (kbd "C-c p") 'magit-find-file-completing-read)
-;;
-;;              ;; magic-flow
-;;              (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
-;;              )
+(require 'init-ui)
+(require 'init-input)
+(require 'init-flycheck)
+(require 'init-misc-pkg)
+(require 'init-org)
+(require 'init-tex)
+(require 'init-program)
 
 (provide 'init-packages)
 ;;; init-packages.el ends here

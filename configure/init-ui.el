@@ -9,15 +9,23 @@
 ;; 关闭文件滑动控件
 (scroll-bar-mode -1)
 
+;; 更改光标的样式
+(setq-default cursor-type 'bar)
+
 ;; 高亮当前的行
 (global-hl-line-mode t)
 
-;; 更改光标的样式
-(setq-default cursor-type 'bar)
+;; 设置行号类型：'t 为绝对行号，'relative 为相对行号
+;; (setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 't)
+
+;; 全局开启行号显示
+(global-display-line-numbers-mode)
 
 ;; ========== 平滑滚动 ==========
 (use-package pixel-scroll
              :ensure nil
+             :defer t
 
              :custom
              ;; 基础像素滚动
@@ -64,10 +72,12 @@
 
 (use-package all-the-icons
              :ensure t
+             :defer t
 )
 
 (use-package all-the-icons-dired
              :ensure t
+             :defer t
 
              :hook
              (dired-mode . all-the-icons-dired-mode)
@@ -75,6 +85,7 @@
 
 (use-package all-the-icons-gnus
              :ensure t
+             :defer t
              :after gnus
 
              :config
@@ -83,6 +94,7 @@
 
 (use-package uniquify
              :ensure nil
+             :defer t
 
              :custom
              (uniquify-separator "/")
@@ -91,7 +103,7 @@
 
 (use-package centaur-tabs
              :ensure t
-             :demand t
+             :defer t
 
              :hook
              ((dashboard-mode  . centaur-tabs-local-mode)
@@ -180,10 +192,10 @@
              (dashboard-banner-logo-title "Come on! Jerry")
 
              ;; Value can be
-             ;; 'official:			which displays the official emacs logo
-             ;; 'logo:				which displays an alternative emacs logo
-             ;; 1, 2 or 3:			which displays one of the text banners
-             ;; "path/to/your/image.png":	which displays whatever image you would prefer
+             ;; 'official:                which displays the official emacs logo
+             ;; 'logo:                    which displays an alternative emacs logo
+             ;; 1, 2 or 3:                which displays one of the text banners
+             ;; "path/to/your/image.png": which displays whatever image you would prefer
              ;; (setq dashboard-startup-banner 'logo)
              (dashboard-startup-banner "~/.emacs.d/configure/mylogo.png")
 
@@ -249,7 +261,7 @@
 ;; ==========================================
 (use-package modus-themes
              :ensure t
-	     :demand t
+             :demand t
 
              ;; ------------------------------------------
              ;; 按键绑定
@@ -410,6 +422,143 @@
 ;;              :config
 ;;              (load-theme 'gruvbox-dark-medium t)
 ;; )
+
+;; 配置 treemacs
+(use-package treemacs
+             :ensure t
+             :defer t  ;; 延迟加载，提升启动速度
+             :bind
+             (:map global-map
+                   ("M-0"       . treemacs-select-window)     ;; 选中 treemacs 窗口
+                   ("C-x t t"   . treemacs)                   ;; 打开/关闭 treemacs
+                   ("C-x t B"   . treemacs-bookmark)          ;; 以书签为根打开
+                   ("C-x t C-t" . treemacs-find-file)         ;; 在 treemacs 中显示当前文件
+                   ("C-x t M-t" . treemacs-find-tag)          ;; 在 treemacs 中显示当前标签
+             )
+
+             :custom
+             ;; 基础外观与行为
+             (treemacs-width 35)                               ;; 设置默认宽度
+             (treemacs-hide-gitignored-files nil)              ;; 是否隐藏 .gitignore 中的文件
+             (treemacs-show-hidden-files t)                     ;; 是否显示隐藏文件 (.*)
+
+             :config
+             ;; 核心功能模式 (推荐在 :config 中启用)
+             (treemacs-follow-mode t)                           ;; 跟随当前文件，自动定位
+             (treemacs-filewatch-mode t)                        ;; 监视文件系统变化，自动刷新
+             (treemacs-fringe-indicator-mode t)                 ;; 在边缘显示指示器
+
+             ;; Git 集成配置
+             ;; 注意: 根据你安装的 Python 情况选择模式
+             ;; - 'simple: 仅高亮文件 (最快, 无需 Python)
+             ;; - 'extended: 高亮文件和目录 (需要 Python)
+             ;; - 'deferred: 同 extended, 但异步执行 (需要 Python)
+             (setq treemacs-git-mode
+                   (if (and (executable-find "python3")
+                            (>= (length (shell-command-to-string "python3 --version 2>/dev/null")) 0))
+                     'deferred    ;; 如果有 Python3, 使用异步扩展模式
+                     'simple)     ;; 否则回退到简单模式
+             )
+
+             ;; 其他可选设置
+             ;; 将单目录子项折叠为一行 (例如: "src/main/java" 折叠为 "src/main/java")
+             ;; 需要 Python 支持，设置折叠层级
+             (setq treemacs-collapse-dirs 3)                    ;; 如果 Python 可用，折叠层级为 3
+)
+
+;; 安装图标主题 (可选, 但强烈推荐)
+(use-package treemacs-all-the-icons
+             :ensure t
+             :defer t  ;; 延迟加载，提升启动速度
+             :after treemacs
+             :config
+             (treemacs-load-theme "all-the-icons")              ;; 启用漂亮的图标
+)
+
+;; 如果你使用 projectile 项目管理器，可以集成
+(use-package treemacs-projectile
+             :ensure t
+             :defer t  ;; 延迟加载，提升启动速度
+             :after treemacs projectile
+)
+
+;; 如果你使用 LSP (如 Eglot 或 lsp-mode)，可以集成 LSP 信息显示
+(use-package lsp-treemacs
+             :ensure t
+             :defer t  ;; 延迟加载，提升启动速度
+             :after treemacs lsp-mode
+             :config
+             (lsp-treemacs-sync-mode 1)                         ;; 同步 LSP 信息到 treemacs
+)
+
+;; -------------------- popwin --------------------
+;; 管理临时弹出窗口，让帮助、编译输出等显示在专用区域
+(use-package popwin
+             :ensure t
+             :defer t  ;; 延迟加载，提升启动速度
+
+             :config
+             (popwin-mode t)  ;; 开启 popwin
+)
+
+;; -------------------- smartparens --------------------
+;; 自动补全括号、引号，并提供结构化编辑功能
+(use-package smartparens
+             :ensure t
+             :defer t  ;; 延迟加载，提升启动速度
+
+             :config
+             ;; 全局启用 smartparens 模式
+             (smartparens-global-mode t)   ;; 括号, 双引号等, 自动补上
+
+             ;; 针对 emacs-lisp-mode 禁用单引号的自动配对
+             (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+
+             ;; 可选：开启高亮匹配括号（内置功能，不依赖 smartparens）
+             (add-hook 'emacs-lisp-mode-hook #'show-paren-mode)
+)
+
+;; -------------------- ace-window --------------------
+;; 快速窗口切换，提供类似“窗口跳转”的交互体验
+(use-package ace-window
+             :ensure t
+             :defer t  ;; 延迟加载，提升启动速度
+
+             :bind
+             ;; 将 ace-window 绑定到 M-q（注意：M-q 原本是 fill-paragraph，覆盖前请确认习惯）
+             ("M-q" . ace-window)
+
+             :custom
+             ;; 自定义选择键（默认是数字，这里改为字母，更顺手）
+             (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+             ;; 自定义选择窗口后的操作菜单（完全替换默认值，如需追加请使用 add-to-list）
+             (aw-dispatch-alist
+               '((?x aw-delete-window "Delete Window")
+                 (?m aw-swap-window "Swap Windows")
+                 (?M aw-move-window "Move Window")
+                 (?r aw-switch-buffer-in-window "Select Buffer")
+                 (?n aw-flip-window)
+                 (?u aw-switch-buffer-other-window "Switch Buffer Other Window")
+                 (?c aw-split-window-fair "Split Fair Window")
+                 (?v aw-split-window-vert "Split Vert Window")
+                 (?b aw-split-window-horz "Split Horz Window")
+                 (?o delete-other-windows "Delete Other Windows")
+                 (?? aw-show-dispatch-help)
+               )
+             )
+
+             :config
+             ;; 确保 aw-dispatch-alist 的设置生效（通过 :custom 已设置，此处留空）
+)
+
+;; -------------------- ace-jump-buffer --------------------
+;; 快速跳转到其他缓冲区（需单独安装 ace-jump-buffer 包）
+(use-package ace-jump-buffer
+             :ensure t
+             :defer t  ;; 延迟加载，提升启动速度
+             :bind
+             ("M-s" . ace-jump-buffer)
+)
 
 (provide 'init-ui)
 ;;; init-ui.el ends here
