@@ -100,8 +100,19 @@
   (find-file "~/.emacs.d/configure/init-packages.el")
 )
 
+;; 重新加载配置
+(defun reload-init-file ()
+  (interactive)
+  (dolist (feature '(init-ui init-input init-flycheck init-misc-pkg
+                     init-org init-tex init-program))
+    (when (featurep feature)
+      (unload-feature feature t)))
+  (load-file (expand-file-name "init.el" user-emacs-directory))
+  (message "Config reloaded."))
+
 ;; 这一行代码，将函数 open-init-file 绑定到 <f2> 键上
 (global-set-key (kbd "<f2>")     'open-init-file)
+(global-set-key (kbd "<f3>")     'reload-init-file)
 
 
 (require 'init-ui)

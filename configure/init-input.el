@@ -57,18 +57,26 @@
              (setq completion-styles '(orderless basic))
              (setq completion-category-defaults nil)
              (setq completion-category-overrides nil)
-             )
+)
 
 ;; 安装 consult 并绑定一些常用命令
 (use-package consult
              :ensure t
              :bind (("C-x b"   . consult-buffer)    ;; 增强版切换缓冲区
-                    ("C-x C-f" . consult-find)      ;; 找文件，类似 fzf 的文件搜索
+                    ("C-x f"   . consult-find)      ;; 找文件，类似 fzf 的文件搜索
                     ("C-s"     . consult-line)      ;; 在当前 buffer 搜索行
                     ("M-y"     . consult-yank-pop)  ;; 增强版查看剪切板历史
                     ("M-g g"   . consult-goto-line) ;; 跳转到行
                     ("M-g f"   . consult-flymake))  ;; 查看 Flymake 错误列表
-             )
+)
+
+(use-package fzf
+             :ensure t
+             :bind
+             ;; 绑定快捷键，比如用 C-c f 来触发 fzf 查找文件
+             (("C-c p" . fzf)
+              ("C-c P" . fzf-directory))
+)
 
 ;; 为候选列表添加丰富的注解信息
 (use-package marginalia

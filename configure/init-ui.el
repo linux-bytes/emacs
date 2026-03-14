@@ -23,32 +23,50 @@
 (global-display-line-numbers-mode)
 
 ;; ========== 平滑滚动 ==========
-(use-package pixel-scroll
-             :ensure nil
-             :defer t
+;; (use-package pixel-scroll
+;;              :ensure nil
+;;              :defer t
+;; 
+;;              :custom
+;;              ;; 基础像素滚动
+;;              (pixel-scroll-precision-interpolate-page t)
+;;              (pixel-scroll-precision-use-momentum t)
+;; 
+;;              ;; 滚动速度与手感
+;;              (pixel-scroll-precision-interpolation-total-time 0.15)  ;; 插值时间（秒）
+;;              ;; (pixel-scroll-precision-interpolation-total-time 0.2)   ;; 插值时间（秒）
+;;              ;; (pixel-scroll-precision-interpolation-factor 8.0)
+;;              ;; (pixel-scroll-precision-momentum-tick 0.016)   ;; 惯性刷新间隔
+;;              ;; (pixel-scroll-precision-momentum-seconds 1.0)  ;; 惯性持续时间
+;;              ;; (pixel-scroll-precision-initial-velocity-factor 0.25)  ;; 初始惯性
+;; 
+;; 
+;;              ;; "通用滚动设置（配合使用）
+;;              ;; (scroll-step 1)
+;;              (scroll-conservatively 101)     ;; 避免跳到中间
+;;              (scroll-margin 2)               ;; 光标距边缘保留行数
+;;              (scroll-preserve-screen-position t)  ;; 翻页后光标位置不变
+;; 
+;;              :config
+;;              (pixel-scroll-precision-mode 1)
+;; )
 
-             :custom
-             ;; 基础像素滚动
-             (pixel-scroll-precision-interpolate-page t)
-             (pixel-scroll-precision-use-momentum t)
+;; 禁用原生的像素滚动，防止冲突
+(pixel-scroll-precision-mode -1)
 
-             ;; 滚动速度与手感
-             (pixel-scroll-precision-interpolation-total-time 0.15)  ;; 插值时间（秒）
-             ;; (pixel-scroll-precision-interpolation-total-time 0.2)   ;; 插值时间（秒）
-             ;; (pixel-scroll-precision-interpolation-factor 8.0)
-             ;; (pixel-scroll-precision-momentum-tick 0.016)   ;; 惯性刷新间隔
-             ;; (pixel-scroll-precision-momentum-seconds 1.0)  ;; 惯性持续时间
-             ;; (pixel-scroll-precision-initial-velocity-factor 0.25)  ;; 初始惯性
+(use-package ultra-scroll
+             :ensure t
+             ;; :demand t  ; 确保在启动时加载，避免滚动问题
 
-
-             ;; 通用滚动设置（配合使用）
-             ;; (scroll-step 1)
-             (scroll-conservatively 101)     ;; 避免跳到中间
-             (scroll-margin 2)               ;; 光标距边缘保留行数
-             (scroll-preserve-screen-position t)  ;; 翻页后光标位置不变
+             :init
+             ;; 基础滚动优化（ultra-scroll 推荐）
+             (setq scroll-conservatively 101          ; 避免自动滚动居中
+                   scroll-margin 0                    ; 关闭边缘滚动触发
+                   auto-window-vscroll nil            ; 必须关闭，防止 Emacs 自动干预垂直滚动
+                   scroll-preserve-screen-position t) ; 保持光标位置
 
              :config
-             (pixel-scroll-precision-mode 1)
+             (ultra-scroll-mode 1)                 ; 启用全局平滑滚动
 )
 
 ;; 关闭启动帮助画面

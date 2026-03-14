@@ -181,6 +181,7 @@
 
 (use-package org-fancy-priorities
             :ensure t
+             :after org
 
             :hook
             (org-mode . org-fancy-priorities-mode)
@@ -251,6 +252,7 @@
              :ensure t                                 ; 从 GNU ELPA 安装
              :defer t
 
+             :after org
              :hook
              ((org-mode markdown-mode) . valign-mode) ; 在 Org 和 Markdown 模式中启用
 
@@ -276,6 +278,8 @@
 (use-package form-feed
              :ensure t
              :defer t
+             :after org
+
              ;; 在编程模式和 Org 模式中都启用 form-feed-mode
              :hook
              ((prog-mode org-mode) . form-feed-mode)

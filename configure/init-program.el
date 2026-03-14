@@ -62,7 +62,8 @@
 
              ;; 有表达式求值 / 非标准设置，留在 :config
              :config
-             (add-to-list 'org-src-lang-modes '("plantuml" . plantuml))
+             (with-eval-after-load 'org
+               (add-to-list 'org-src-lang-modes '("plantuml" . plantuml)))
 
              (setq plantuml-preview-command
                    (cond ((eq system-type 'windows-nt) "start")
@@ -109,9 +110,8 @@
 
 (use-package corfu
              :ensure t
-             :defer t
-             :init
-             (global-corfu-mode))
+	     :hook (after-init . global-corfu-mode)
+)
 
 (use-package lsp-mode
              :ensure t
