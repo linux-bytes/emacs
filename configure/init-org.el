@@ -135,6 +135,7 @@
                '((ditaa . t)
                  (dot . t)
                  (plantuml . t)
+                 (mermaid . t)
                  (shell . t)
                  (latex . t)
                  (emacs-lisp . t)
@@ -413,6 +414,16 @@
              :ensure t
              :defer t
              :after org
+)
+
+(use-package ob-mermaid
+             :ensure t
+             :after org
+             :config
+	     ;; 因为 mmdc 是通过 npm 全局安装的，所以路径可能不在系统默认的 PATH 中。
+	     ;; 你需要手动指定 ob-mermaid-cli-path 变量
+             ;; (setq ob-mermaid-cli-path (executable-find "mmdc"))
+             (setq ob-mermaid-cli-path "/home/jerry/.npm/packages/bin/mmdc")
 )
 
 ;; 配置 pdf-tools

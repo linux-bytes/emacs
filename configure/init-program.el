@@ -77,6 +77,13 @@
                          (setq-local comment-end "")))
 )
 
+(use-package mermaid-mode
+             :ensure t
+             :config
+             (setq mermaid-mmdc-location (executable-find "mmdc"))
+             (setq mermaid-output-format ".svg")
+)
+
 (use-package ag
              :ensure t
              :defer t
