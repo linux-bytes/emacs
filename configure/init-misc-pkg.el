@@ -10,28 +10,62 @@
              (image-mode . eimp-mode)
 )
 
-;; 增强 Dired 的语法高亮
-(use-package diredfl
-             :ensure t
-             :hook (dired-mode . diredfl-mode)   ;; 等价于 (diredfl-global-mode 1)，但更精确
-)
+;; Dirvish (功能更强的文件管理器)
+(use-package dirvish
+	     :ensure t
+	     :init
+	     ;; 将 extensions/ 子目录加入 load-path，以便加载扩展模块
+	     (let ((ext-dir (expand-file-name "extensions"
+                                              (file-name-directory (locate-library "dirvish")))
+                  ))
+	      (when (file-directory-p ext-dir)
+                    (add-to-list 'load-path ext-dir)
+              )
+	     )
+	     (dirvish-override-dired-mode)   ;; 全局接管 dired，所有 dired 调用都走 dirvish
 
-;; 为 Dired 添加图标
-(use-package all-the-icons-dired
-             :ensure t
-             :hook (dired-mode . all-the-icons-dired-mode)
-)
-
-;; 增强 image-dired 的功能（需要额外包 image-dired+）
-(use-package image-dired+
-             :ensure t
-             :after (image-dired org)           ;; 在 image-dired 加载后加载
-             :hook
-             (image-dired-mode . (lambda ()
-                                   (image-diredx-async-mode 1)
-                                   (image-diredx-adjust-mode 1)
-                                 )
+	     :custom
+             (dirvish-quick-access-entries    ;; 快速访问目录（`a' 键）
+               '(("h" "~/"         "Home")
+                 ("d" "~/Downloads" "Downloads"))
+	     )
+	     (dirvish-mode-line-format        ;; 状态栏信息
+               '(:left (sort symlink) :right (omit yank index))
              )
+	     (dirvish-attributes              ;; 显示属性：图标 + 文件大小 + 修改时间
+               '(nerd-icons file-size collapse subtree-state vc-state git-msg))
+	     (delete-by-moving-to-trash t)   ;; 删除移入回收站
+
+             :config
+             (require 'dirvish-quick-access)
+             (require 'dirvish-history)
+             (require 'dirvish-subtree)
+             (require 'dirvish-narrow)
+             (require 'dirvish-yank)
+             (require 'dirvish-vc)
+             (require 'dirvish-emerge)
+             (require 'dirvish-ls)
+
+             :bind
+             (("C-c f" . dirvish)             ;; 打开 dirvish
+              :map dirvish-mode-map
+              ("a"   . dirvish-quick-access)
+              ("f"   . dirvish-file-info-menu)
+              ("y"   . dirvish-yank-menu)
+              ("N"   . dirvish-narrow)
+              ("^"   . dirvish-history-last)
+              ("h"   . dirvish-history-jump)
+              ("s"   . dirvish-quicksort)
+              ("v"   . dirvish-vc-menu)
+              ("TAB" . dirvish-subtree-toggle)
+              ("M-f" . dirvish-history-go-forward)
+              ("M-b" . dirvish-history-go-backward)
+              ("M-l" . dirvish-ls-switches-menu)
+              ("M-m" . dirvish-mark-menu)
+              ("M-t" . dirvish-layout-switch)
+              ("M-s" . dirvish-setup-menu)
+              ("M-e" . dirvish-emerge-menu)
+              ("M-j" . dirvish-fd-jump))
 )
 
 (use-package google-translate

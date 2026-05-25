@@ -93,14 +93,6 @@
              :defer t
 )
 
-(use-package all-the-icons-dired
-             :ensure t
-             :defer t
-
-             :hook
-             (dired-mode . all-the-icons-dired-mode)
-)
-
 (use-package all-the-icons-gnus
              :ensure t
              :defer t
@@ -128,6 +120,7 @@
               (term-mode       . centaur-tabs-local-mode)
               (calendar-mode   . centaur-tabs-local-mode)
               (org-agenda-mode . centaur-tabs-local-mode)
+              (dirvish-mode    . centaur-tabs-local-mode)  ;; dirvish 界面不显示标签
              )
 
              :bind
@@ -178,7 +171,7 @@
                             )
                             "Emacs")
                            ((derived-mode-p 'prog-mode) "Editing")
-                           ((derived-mode-p 'dired-mode) "Dired")
+                           ((derived-mode-p 'dirvish-mode) "Dirvish")
                            ((memq major-mode '(helpful-mode help-mode)) "Help")
                            ((memq major-mode '(org-mode
                                                 org-agenda-clockreport-mode
@@ -200,6 +193,10 @@
              (setq centaur-tabs-buffer-groups-function #'my/centaur-tabs-buffer-groups)
              (centaur-tabs-change-fonts (face-attribute 'default :font) 110)
              (centaur-tabs-headline-match)
+             ;; 过滤 dirvish 内部 buffer，不在标签栏显示
+             (setq centaur-tabs-excluded-prefixes
+                   (append centaur-tabs-excluded-prefixes
+                           '("*dirvish-")))
              (centaur-tabs-mode 1)
 )
 
