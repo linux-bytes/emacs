@@ -215,7 +215,7 @@
              ;; 1, 2 or 3:                which displays one of the text banners
              ;; "path/to/your/image.png": which displays whatever image you would prefer
              ;; (setq dashboard-startup-banner 'logo)
-             (dashboard-startup-banner "~/.emacs.d/configure/mylogo.png")
+             (dashboard-startup-banner (expand-file-name "configure/mylogo.png" user-emacs-directory))
 
              ;; Content is not centered by default. To center, set
              (dashboard-center-content t)

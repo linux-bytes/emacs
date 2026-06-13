@@ -80,7 +80,7 @@
 
              :custom
              (recentf-max-menu-item 10)                       ;; 菜单中显示最近文件数
-             (recentf-exclude (list (expand-file-name "~/.emacs.d/elpa/")))  ;; 排除插件目录
+             (recentf-exclude (list (expand-file-name "elpa/" user-emacs-directory)))  ;; 排除插件目录
 
              :config
              (recentf-mode 1)

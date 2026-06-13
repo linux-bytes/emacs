@@ -6,7 +6,7 @@
 (setq user-full-name "Jerry Zhou")
 (setq user-mail-address "zhouchunhua@lixiang.com")
 
-(add-to-list 'load-path "~/.emacs.d/configure")
+(add-to-list 'load-path (expand-file-name "configure" user-emacs-directory))
 
 (require 'init-packages)
 

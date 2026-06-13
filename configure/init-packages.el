@@ -97,7 +97,7 @@
 ;; 快速打开配置文件
 (defun open-init-file()
   (interactive)
-  (find-file "~/.emacs.d/configure/init-packages.el")
+  (find-file (expand-file-name "configure/init-packages.el" user-emacs-directory))
 )
 
 ;; 重新加载配置
